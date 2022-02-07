@@ -1,0 +1,42 @@
+<template>
+  <app-page
+    v-for="item of products.filter(e => e.sale >= 10).splice(0, amountProducts)" 
+    :key="item.id" 
+    :product="item"
+    :imgWidth="imgWidth"
+    :style="style"
+    :user="user"
+  ></app-page>
+</template>
+
+<script>
+import AppPage from '../../../../ui/AppPage.vue'
+
+export default {
+  components: { AppPage },
+  props: {
+    products: {
+      type: Array,
+      required: true
+    },
+    imgWidth: {
+      type: Number,
+      required: true
+    },
+    style: {
+      type: Object,
+      required: false,
+      default: undefined
+    },
+    amountProducts: {
+      type: Number,
+      required: false,
+      default: 6
+    },
+    user: {
+      type: Object,
+      required: false
+    }
+  }
+}
+</script>
